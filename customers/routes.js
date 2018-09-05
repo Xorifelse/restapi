@@ -39,7 +39,7 @@ router.post('/customers', (req, res, next) => {
 
 router.put('/customers/:id', (req, res, next) => {
   Customer
-    .findById(req.params.id)
+    .findById(req.params.id, { include: [Company] })
     .then(customer => {
       if (!customer) res.status(404).send({
         message: `Customer does not exist`
